@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.0.294 (2024-08-02)
+
+## What's Changed
+* Delete Porter Application quivr-com by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2927
+* Delete Porter Application quivr-com-backend by @porter-deployment-app in https://github.com/QuivrHQ/quivr/pull/2928
+* feat: quivr core tox test + parsers by @AmineDiro in https://github.com/QuivrHQ/quivr/pull/2929
+* feat(frontend): handle no brain selection by @Zewed in https://github.com/QuivrHQ/quivr/pull/2932
+* fix: processor quivr version by @AmineDiro in https://github.com/QuivrHQ/quivr/pull/2934
+* fix: quivr core fix tests by @AmineDiro in https://github.com/QuivrHQ/quivr/pull/2935
+* chore(main): release core 0.0.13 by @StanGirard in https://github.com/QuivrHQ/quivr/pull/2930
+
+
+**Full Changelog**: https://github.com/QuivrHQ/quivr/compare/v0.0.293...v0.0.294
+
 ## 0.0.293 (2024-07-30)
 
 ## What's Changed
