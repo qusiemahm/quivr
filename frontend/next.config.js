@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 const path = require("path");
 
 const nextConfig = {
@@ -102,6 +101,7 @@ const ContentSecurityPolicy = {
     "https://www.google-analytics.com/",
     "https://js.stripe.com",
     "https://us.posthog.com",
+    "https://y040k44.65.21.12.12.sslip.io",
   ],
   "frame-src": ["https://js.stripe.com", "https://us.posthog.com"],
   "frame-ancestors": ["'none'"],
@@ -110,6 +110,7 @@ const ContentSecurityPolicy = {
     process.env.NEXT_PUBLIC_FRONTEND_URL,
     "https://preview.quivr.app",
     "https://*.vercel.app",
+    "https://y040k44.65.21.12.12.sslip.io",
   ],
 };
 
@@ -149,51 +150,27 @@ const securityHeaders = [
     value: "max-age=31536000",
   },
 ];
-//AJouter le content security policy uniquement en pre-vew et en prod
 
-// Check if the SENTRY_DSN environment variable is defined
+// Add Sentry configuration if SENTRY_DSN is defined
 if (process.env.SENTRY_DSN) {
-  // SENTRY_DSN exists, include Sentry configuration
   const { withSentryConfig } = require("@sentry/nextjs");
 
   module.exports = withSentryConfig(
     nextConfig,
     {
-      // For all available options, see:
-      // https://github.com/getsentry/sentry-webpack-plugin#options
-
-      // Suppresses source map uploading logs during build
       silent: true,
       org: "quivr-brain",
       project: "javascript-nextjs",
     },
     {
-      // For all available options, see:
-      // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
-
-      // Upload a larger set of source maps for prettier stack traces (increases build time)
       widenClientFileUpload: true,
-
-      // Transpiles SDK to be compatible with IE11 (increases bundle size)
       transpileClientSDK: true,
-
-      // Routes browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers (increases server load)
       tunnelRoute: "/monitoring",
-
-      // Hides source maps from generated client bundles
       hideSourceMaps: true,
-
-      // Automatically tree-shake Sentry logger statements to reduce bundle size
       disableLogger: true,
-
-      // Enables automatic instrumentation of Vercel Cron Monitors.
-      // See the following for more information:
-      // https://docs.sentry.io/product/crons/
-      // https://vercel.com/docs/cron-jobs
       automaticVercelMonitors: true,
     }
   );
 } else {
-  // SENTRY_DSN does not exist, export nextConfig without Sentry
   module.exports = nextConfig;
 }
