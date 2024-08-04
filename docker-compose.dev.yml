@@ -40,7 +40,7 @@ services:
       - "host.docker.internal:host-gateway"
     restart: always
     ports:
-      - 6379:6379
+      - 6380:6379
 
   notifier:
     pull_policy: never
